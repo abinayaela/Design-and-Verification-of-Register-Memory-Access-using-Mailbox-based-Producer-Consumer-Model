@@ -90,6 +90,8 @@ task producer();
       pkt.wr   = $urandom_range(0, 1);
       mbox.put(pkt);
 
+
+
 $display("[%0t] PRODUCER: Sent packet -> Addr=%0d Data=%0d WR=%0b",$time, pkt.addr, pkt.data, pkt.wr);
 
       #5;
@@ -102,6 +104,8 @@ task consumer();
     forever 
       begin
       mbox.get(rcv);
+
+
       if (rcv.wr) 
         begin
         memory[rcv.addr] = rcv.data;
@@ -117,6 +121,9 @@ task consumer();
 endtask     endmodule
 
 ```
+
+
+
 ### Simulation Output
 
 <img width="1920" height="1080" alt="Screenshot 2025-11-04 151243" src="https://github.com/user-attachments/assets/9958d90f-2c9b-4237-b896-c4050357da7a" />
